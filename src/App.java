@@ -13,7 +13,6 @@ Give the user the option to play again at the end of the story
 
 import java.util.Scanner;
 
-
 public class App {
     static Scanner key = new Scanner(System.in);
     static String input; 
@@ -29,13 +28,19 @@ public class App {
             }
             else{
                 System.out.println("Please enter a valid input");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
     public static void introduction() {
        input = getUserInput(""" 
             Welcome to Dr. Java's Choose Your Own Adventure Game! 
-            You are Dr. Java, a computer science professor at a local community college. 
+            You are Dr. Java, a professor at a local community college. 
+            You got your PhD from the University of Washington, and now head the Computer Science and IT divisions.
             You are in your office, grading papers, when you hear a knock at the door. 
             
             Do you: 
@@ -64,10 +69,21 @@ public class App {
             1. Help the student
             2. Tell the student to come back later
             """);
+
+        switch (input) {
+            case "1":
+                helpTheStudent();
+                break;
+            case "2":
+                tellTheStudentToComeBackLater();
+                break;
+        }
     }
 
     public static void helpTheStudent() {
-        input = getUserInput("""
+        System.out.print("\033[H\033[2J");  
+        System.out.flush(); 
+        System.out.println("""
             You decide to help the student.
             You take a look at the code and notice that the student is missing a semicolon.
             You tell the student to add the semicolon and the program will run.
@@ -78,8 +94,8 @@ public class App {
             """);
     }
 
-    public static void automatedEmail(){
-        getUserInput("""
+    public static void automatedEmail(String s) {
+        getUserInput(s + """
             An hour later, you get an automated email from the school's IT department.
             The school's cloud computing resources are down and they need you to fix it.
             Someone has overloaded the system with, several high computation jobs, and the load balancer has gone offline.
@@ -88,63 +104,64 @@ public class App {
             1. Fix the problem
             2. Email the IT department and tell them to fix it
             """);
+        
+        switch (input) {
+            case "1":
+                fixTheProblem();
+                break;
+            case "2":
+                emailTheITDepartmentAndTellThemToFixIt();
+                break;
+        }
 }
 
     public static void tellTheStudentToComeBackLater() {
-        System.out.println("You tell the student to come back later.");
-        System.out.println("The student looks disappointed, but leaves.");
-        automatedEmail();
+        automatedEmail("""
+            You tell the student to come back later.
+            The student looks disappointed, but leaves.
+            """);
     }
 
     public static void IgnoreTheKnock() {
-        System.out.println("You ignore the knock and continue grading papers.");
-        automatedEmail();
+        automatedEmail("You ignore the knock and continue grading papers.");
     }
 
     public static void fixTheProblem() {
-        System.out.println("You decide to fix the problem.");
-        System.out.println("You spend the rest of the day trying to figure out what is wrong.");
-        System.out.println("You finally figure out that the load balancer is overloaded because some student programed an infinite loop that propengated to all the servers.");
-        System.out.println("You reset the load balancer, and revoke permissions from the student.");
-        System.out.println("You finish grading the rest of your papers and go home for the day.");
-        System.out.println("You have a great weekend and enjoy the rest of your summer.");
-        System.out.println("THE END");
+        System.out.print("\033[H\033[2J");  
+        System.out.flush(); 
+        System.out.println("""
+            You decide to fix the problem.
+            You spend the rest of the day trying to figure out what is wrong.
+            You finally figure out that the load balancer is overloaded because some student programed an infinite loop that propagated to all the servers.
+            You reset the load balancer, and revoke permissions from the student.
+            You finish grading the rest of your papers and go home for the day.
+            You have a great weekend and enjoy the rest of your summer.
+            THE END
+            """);
+    }
+
+    public static void emailTheITDepartmentAndTellThemToFixIt() {
+        getUserInput("""
+            You decide to email the IT department and tell them to fix it.
+            Then you get an email from yourself, and remember that you are the head of the IT department.
+            The servers are still down, and they have to be fixed before the students can submit their final projects.
+            You are starting to get frustrated. 
+            Do you:
+            1. Fix the problem
+            2. Email the IT department and tell them to fix it
+            """);
+        switch (input) {
+            case "1":
+                fixTheProblem();
+                break;
+            case "2":
+                emailTheITDepartmentAndTellThemToFixIt();
+                break;
+        }
     }
 
     public static void story() {
-        boolean invalid = false;
-        do{
-            String input = key.nextLine();
-            switch (input) {
-                case "1":
-                    answerTheDoor();
-                    invalid = false;
-                    do{
-                        switch (key.nextLine()) {
-                            case "1":
-                                helpTheStudent();
-                                return;
-                            case "2":
-                                tellTheStudentToComeBackLater();
-                                break;
-                            default:
-                                System.out.println("Invalid input. Please enter 1 or 2.");
-                                invalid = true;
-                                break;
-                        }
-                    } while (invalid);
-                    input = "2";
-
-                case "2":
-                    IgnoreTheKnock();
-                    break;
-                default:
-                    System.out.println("Invalid input. Please enter 1 or 2.");
-                    invalid = true;
-                    break;
-            }
-        }while(invalid);
-        
+        introduction();        
     }
 
     public static void main(String[] args) throws Exception {
