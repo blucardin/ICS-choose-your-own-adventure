@@ -12,11 +12,9 @@ Give the user the option to play again at the end of the story
  */
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class App {
     static Scanner key = new Scanner(System.in);
-    static Random rand = new Random();
     static String input; 
 
     public static String getUserInput(String s){
