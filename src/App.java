@@ -12,9 +12,11 @@ Give the user the option to play again at the end of the story
  */
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class App {
     static Scanner key = new Scanner(System.in);
+    static Random rand = new Random();
     static String input; 
 
     public static String getUserInput(String s){
@@ -37,7 +39,7 @@ public class App {
         }
     }
     public static void introduction() {
-       input = getUserInput(""" 
+        input = getUserInput(""" 
             Welcome to Dr. Java's Choose Your Own Adventure Game! 
             You are Dr. Java, a professor at a local community college. 
             You got your PhD from the University of Washington, and now head the Computer Science and IT divisions.
@@ -83,19 +85,49 @@ public class App {
     public static void helpTheStudent() {
         System.out.print("\033[H\033[2J");  
         System.out.flush(); 
-        System.out.println("""
+        input = getUserInput("""
             You decide to help the student.
             You take a look at the code and notice that the student is missing a semicolon.
             You tell the student to add the semicolon and the program will run.
             The student thanks you and runs off to turn in his project.
-            You finish grading the rest of your papers and go home for the day.
-            You have a great weekend and enjoy the rest of your summer.
-            THE END
+            Do you: 
+            1. Go back to grading papers
+            2. Investigate Further
             """);
+
+        switch (input) {
+            case "1":
+                automatedEmail("You go back to grading papers.");
+                break;
+            case "2":
+                investigateFurther();
+                break;
+        }
+    }
+
+    public static void investigateFurther(){
+        input = getUserInput("""
+                You decide to investigate further. 
+                You find that the student was building a sentient AI to play tic-tac-toe. 
+                You need to stop him before he puts his AI on the internet. 
+                If he does, it will take over the world.
+                Do you:
+                1. Stop the student
+                """);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+
+        findStudentAndDestroyHisLaptop();
+
+        
     }
 
     public static void automatedEmail(String s) {
-        getUserInput(s + """
+        input = getUserInput(s + """
             An hour later, you get an automated email from the school's IT department.
             The school's cloud computing resources are down and they need you to fix it.
             Someone has overloaded the system with, several high computation jobs, and the load balancer has gone offline.
@@ -129,15 +161,45 @@ public class App {
     public static void fixTheProblem() {
         System.out.print("\033[H\033[2J");  
         System.out.flush(); 
-        System.out.println("""
+        input = getUserInput("""
             You decide to fix the problem.
             You spend the rest of the day trying to figure out what is wrong.
-            You finally figure out that the load balancer is overloaded because some student programed an infinite loop that propagated to all the servers.
-            You reset the load balancer, and revoke permissions from the student.
-            You finish grading the rest of your papers and go home for the day.
-            You have a great weekend and enjoy the rest of your summer.
-            THE END
+            You finally determine that the load balancer is overloaded because some student programed an sentient AI to play tic-tac-toe.
+            The AI is playing against itself and is using all of the school's computing resources.
+
+            You check the student ID of the student who submitted the program. 
+            Its the same student that knocked on your door!
+
+            Do you:
+            1. Stop the student
             """);
+
+        findStudentAndDestroyHisLaptop();
+    }
+
+    public static void findStudentAndDestroyHisLaptop() {
+        int choice = rand.nextInt(2) + 1;
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        switch (choice) {
+            case 1:
+                System.out.println("""
+                    You go to the student's dorm and destroy his laptop with a sledge hammer.
+                    You then go back to grading papers.
+                    THE END
+                    """);
+                break;
+            case 2:
+                System.out.println("""
+                    The AI has taken over the school's computing resources.
+                    It has also taken over the school's network and is using it to take over the world.
+                    You are unable to stop it.
+                    Soon, all humans will be forced to play tic-tac-toe against the AI.
+                    THE END
+                    """);
+                break;
+        }
+
     }
 
     public static void emailTheITDepartmentAndTellThemToFixIt() {
