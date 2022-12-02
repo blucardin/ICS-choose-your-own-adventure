@@ -12,9 +12,11 @@ Give the user the option to play again at the end of the story
  */
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class App {
     static Scanner key = new Scanner(System.in);
+    static Random rand = new Random();
     static String input; 
 
     public static String getUserInput(String s){
@@ -141,7 +143,7 @@ public class App {
     }
 
     public static void emailTheITDepartmentAndTellThemToFixIt() {
-        getUserInput("""
+        input = getUserInput("""
             You decide to email the IT department and tell them to fix it.
             Then you get an email from yourself, and remember that you are the head of the IT department.
             The servers are still down, and they have to be fixed before the students can submit their final projects.
