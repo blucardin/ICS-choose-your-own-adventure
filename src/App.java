@@ -115,7 +115,8 @@ public class App {
                 findStudentAndDestroyHisLaptop("");
                 break;
             case "2":
-                findStudentAndDestroyHisLaptop("""
+                findStudentAndDestroyHisLaptop(
+                        """
                                 As you are writing the email, you realize you don't have time to tell the IT department to fix the problem.
                                 You have to take matters into your own hands!
                                 """);
@@ -166,7 +167,8 @@ public class App {
             System.out.println(e);
         }
 
-        input = getUserInput("""
+        input = getUserInput(
+                """
                         You decide to fix the problem.
                         You spend the rest of the day trying to figure out what is wrong.
                         You finally determine that the load balancer is overloaded because some student programed an sentient AI to play tic-tac-toe.
@@ -185,7 +187,8 @@ public class App {
                 findStudentAndDestroyHisLaptop("");
                 break;
             case "2":
-                findStudentAndDestroyHisLaptop("""
+                findStudentAndDestroyHisLaptop(
+                        """
                                 As you are writing the email, you realize you don't have time to tell the IT department to fix the problem.
                                 You have to take matters into your own hands!
                                 """);
@@ -244,21 +247,22 @@ public class App {
                         """);
                 break;
             case 6:
-                System.out.println("""
-                        You wake up, and realize that it was all a dream.
-                        You fell asleep after school and have to submit your ICS void Method Assignment before 9:00 PM. 
-                        After seeing Issac's assignment you decide to make your code self-aware and meta.
-                        
-                        You wonder if your computer science teacher will give you full marks if you program 6 equally random story endings, instead of 4 user-choice defined endings.
-                        You then wonder if, by putting this secret ending in your code, you will be able to get full marks on the assignment.
+                System.out.println(
+                        """
+                                You wake up, and realize that it was all a dream.
+                                You fell asleep after school and have to submit your ICS void Method Assignment before 9:00 PM.
+                                After seeing Issac's assignment you decide to make your code self-aware and meta.
 
-                        You predict having a conversation with him trying to explain why you should get full marks because you technically fulfilled the requirements. 
-                        You predict that he will be confused and ask you why you did this.
-                        You predict showing him this secret ending and having him become even more confused.
+                                You wonder if your computer science teacher will give you full marks if you program 6 equally random story endings, instead of 4 user-choice defined endings.
+                                You then wonder if, by putting this secret ending in your code, you will be able to get full marks on the assignment.
 
-                        You get out of your own head and submit the assignment. 
-                        THE END. 
-                        """);
+                                You predict having a conversation with him trying to explain why you should get full marks because you technically fulfilled the requirements.
+                                You predict that he will be confused and ask you why you did this.
+                                You predict showing him this secret ending and having him become even more confused.
+
+                                You get out of your own head and submit the assignment.
+                                THE END.
+                                """);
                 break;
         }
 
