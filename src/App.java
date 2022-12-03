@@ -58,7 +58,7 @@ public class App {
         input = getUserInput("""
                 You answer the door and find a student standing there.
                 \"I'm sorry to bother you, but I'm having trouble with my code.\"
-                \"It the program for my final project, and its due today.\" he exclaims.
+                \"It's the program for my final project, and its due today.\" he exclaims.
                 You don't have time to help him as you have a lot of grading to do.
                 But you remember how difficult it is to debug code, especially as a undergrad.
                 Do you:
